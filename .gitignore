@@ -1,0 +1,34 @@
+## Build
+bin/
+obj/
+out/
+*.user
+*.suo
+*.cache
+*.log
+
+## VS / Rider / VSCode
+.vs/
+.idea/
+.vscode/
+
+## OS
+.DS_Store
+Thumbs.db
+
+## NuGet
+*.nupkg
+packages/
+
+## EF Core Migrations snapshots (keep Migrations folder but ignore generated artifacts if you want)
+# (عادة خليه فاضي، EF يضيف نفسه)
+
+## Secrets
+**/appsettings.json
+**/appsettings.Production.json
+**/appsettings.Local.json
+*.secret.json
+.env
+
+## Publish
+publish/

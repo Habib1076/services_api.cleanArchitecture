@@ -8,7 +8,7 @@ namespace services_api.Infrastructure.Data
         
         public AppdbContext(DbContextOptions<AppdbContext> options) : base(options) { }
         public DbSet<Offer> Offers { get; set; }
-        //public DbSet<Section> Sections { get; set; }
+        public DbSet<Section> Sections { get; set; }
 
     }
 }

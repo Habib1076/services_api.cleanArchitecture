@@ -12,11 +12,11 @@ namespace services_api.Controllers
     public class OffersController : ControllerBase
     {
         private readonly IOfferService _offerService;
-        public OffersController(IOfferService serviceService) {
-            _offerService = serviceService;
+        public OffersController(IOfferService offerService) {
+            _offerService = offerService;
         }
         [HttpPost]
-        public async Task<IActionResult> AddOffer(OfferRequestDTO addOfferRequestDTO)
+        public async Task<IActionResult> AddOffer(AddOfferRequestDTO addOfferRequestDTO)
         {
             var result = await _offerService.AddOffer(addOfferRequestDTO);
             return Ok(result);
@@ -34,7 +34,7 @@ namespace services_api.Controllers
             return Ok(result);
         }
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateOffer(OfferRequestDTO updateOfferRequestDTO, int id)
+        public async Task<IActionResult> UpdateOffer(AddOfferRequestDTO updateOfferRequestDTO, int id)
         {
             var result = await _offerService.UpdateOffer(updateOfferRequestDTO, id);
             return Ok(result);

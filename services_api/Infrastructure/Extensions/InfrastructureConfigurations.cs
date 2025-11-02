@@ -16,6 +16,7 @@ namespace services_api.Infrastructure.Extensions
 
 
             services.AddOfferRepository();
+            services.AddSectionRepository();
             return services;
         }
     }

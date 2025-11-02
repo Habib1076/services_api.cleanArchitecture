@@ -1,4 +1,6 @@
+using Microsoft.EntityFrameworkCore;
 using services_api.Application.Extensions;
+using services_api.Infrastructure.Data;
 using services_api.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +13,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
+//builder.Services.AddDbContext<AppdbContext>(options =>
+//                options.UseInMemoryDatabase("MyDb"));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

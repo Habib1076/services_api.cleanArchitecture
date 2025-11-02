@@ -1,9 +1,11 @@
 ﻿namespace services_api.Application.DTOs
 {
-    public class SectionRequestDTO
+
+    public class AddSectionRequestDTO
     {
         public string SectionName { get; set; }
         public string SectionDescription { get; set; }
+        
         public bool IsValid()
         {
             if (string.IsNullOrEmpty(SectionName))

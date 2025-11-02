@@ -5,21 +5,23 @@ namespace services_api.Application;
 
 internal static class OfferConverter
 {
-    public static Offer ToOfferEntity(this OfferRequestDTO addOfferRequestDTO)
+    public static Offer ToOfferEntity(this AddOfferRequestDTO addOfferRequestDTO)
     {
         return new Offer
         {
             Name = addOfferRequestDTO.OfferName,
             Description = addOfferRequestDTO.OfferDescription,
+            SectionId = addOfferRequestDTO.SectiontId
         };
     }
 
-    public static OfferResponseDTO ToAddOfferResponse(this OfferRequestDTO addOfferRequestDTO, DateTime CreatedAt,int Id) {
-        return new OfferResponseDTO
+    public static AddOfferResponseDTO ToAddOfferResponse(this AddOfferRequestDTO addOfferRequestDTO, DateTime CreatedAt,int Id) {
+        return new AddOfferResponseDTO
         {
             Id = Id,
             OfferName = addOfferRequestDTO.OfferName,
             OfferDescription = addOfferRequestDTO.OfferDescription,
+            SectionId = addOfferRequestDTO.SectiontId,
             CreatedAt = CreatedAt,
         };
     }
@@ -30,15 +32,17 @@ internal static class OfferConverter
             Id = offer.Id,
             OfferName = offer.Name,
             OfferDescription = offer.Description,
+            SectionId = offer.SectionId,
             CreatedAt = offer.CreatedAt,
         };
     }
-    public static OfferResponseDTO ToUpdateOfferResponse(this Offer offer) {
-        return new OfferResponseDTO
+    public static AddOfferResponseDTO ToUpdateOfferResponse(this Offer offer) {
+        return new AddOfferResponseDTO
         {
             Id = offer.Id,
             OfferName = offer.Name,
             OfferDescription = offer.Description,
+            SectionId = offer.SectionId,
             CreatedAt = offer.CreatedAt,
         };
     }

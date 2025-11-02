@@ -1,7 +1,9 @@
 ﻿namespace services_api.Application.DTOs
 {
-    public class OfferRequestDTO
+
+    public class UpdateOfferRequestDTO
     {
+        public int id { get; set; }
         public string OfferName { get; set; }
         public string OfferDescription { get; set; }
         public bool IsValid()

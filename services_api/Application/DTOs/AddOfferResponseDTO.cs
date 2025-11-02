@@ -1,6 +1,8 @@
-﻿namespace services_api.Application.DTOs
+﻿using services_api.Domain.Entities;
+
+namespace services_api.Application.DTOs
 {
-    public class GetOffersDTO
+    public class AddOfferResponseDTO
     {
         public int Id { get; set; }
         public string OfferName { get; set; }

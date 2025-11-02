@@ -8,11 +8,11 @@ namespace services_api.Application.Services;
 
 public interface IOfferService
 {
-    Task<OfferResponseDTO> AddOffer(OfferRequestDTO addOfferRequestDTO);
+    Task<AddOfferResponseDTO> AddOffer(AddOfferRequestDTO addOfferRequestDTO);
     Task<IEnumerable<GetOffersDTO>> GetAllOffers();
     Task<GetOffersDTO> GetOfferById(int id);
-    Task<OfferResponseDTO> UpdateOffer(OfferRequestDTO addOfferRequestDTO, int id);
-    Task<OfferResponseDTO> DeleteOffer(int id);
+    Task<AddOfferResponseDTO> UpdateOffer(AddOfferRequestDTO addOfferRequestDTO, int id);
+    Task<AddOfferResponseDTO> DeleteOffer(int id);
 }
 internal sealed class OfferService : IOfferService
 {
@@ -20,7 +20,7 @@ internal sealed class OfferService : IOfferService
     public OfferService(IOfferRepository servicesRepository) {
         _servicesRepository = servicesRepository;
     }
-    public async Task<OfferResponseDTO> AddOffer(OfferRequestDTO addOfferRequestDTO)
+    public async Task<AddOfferResponseDTO> AddOffer(AddOfferRequestDTO addOfferRequestDTO)
     {
         try
         {
@@ -37,7 +37,6 @@ internal sealed class OfferService : IOfferService
         }
         catch (Exception ex)
         {
-
             throw new ArgumentException("Unexpected Error!");
         }
     }
@@ -59,7 +58,7 @@ internal sealed class OfferService : IOfferService
         var response = offer.ToGetOfferResponse();
         return response;
     }
-    public async Task<OfferResponseDTO> UpdateOffer(OfferRequestDTO updateOfferRequestDTO,int id)
+    public async Task<AddOfferResponseDTO> UpdateOffer(AddOfferRequestDTO updateOfferRequestDTO,int id)
     {
         if(updateOfferRequestDTO == null || !updateOfferRequestDTO.IsValid())
         {
@@ -79,7 +78,7 @@ internal sealed class OfferService : IOfferService
         var response = offer.ToUpdateOfferResponse();
         return response;
     }
-    public async Task<OfferResponseDTO> DeleteOffer(int id) { 
+    public async Task<AddOfferResponseDTO> DeleteOffer(int id) { 
         if (id <= 0)
         {
             return OfferErrors.NotFound(id);
@@ -89,7 +88,7 @@ internal sealed class OfferService : IOfferService
             return OfferErrors.NotFound(id);
         
         await _servicesRepository.DeleteOfferAsync(offer);
-        return new OfferResponseDTO()
+        return new AddOfferResponseDTO()
         {
             Id = id,
             OfferName = offer.Name,
@@ -102,14 +101,14 @@ internal sealed class OfferService : IOfferService
 
 public static class OfferErrors
 {
-    public static OfferResponseDTO InvalidRequest()
+    public static AddOfferResponseDTO InvalidRequest()
     {
-        return new OfferResponseDTO();
+        return new AddOfferResponseDTO();
     }
 
-    public static OfferResponseDTO NotFound(int id)
+    public static AddOfferResponseDTO NotFound(int id)
     {
-        return new OfferResponseDTO
+        return new AddOfferResponseDTO
         {
             Id = id,
             OfferName = "Not Found",

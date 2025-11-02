@@ -7,7 +7,7 @@ namespace services_api.Domain.Entities
         public string Name { get; set; }
         public string Description { get; set; }
         public DateTime CreatedAt { get; private set; } = DateTime.Now;
-        //public int SectionId { get; set; }
-        //public Section Section { get; set; } = default!;
+        public int SectionId { get; set; }
+        public Section Section { get; set; } = default!;
     }
 }
